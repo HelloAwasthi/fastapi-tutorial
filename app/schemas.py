@@ -10,10 +10,18 @@ class PostBase(BaseModel):       # helps you create a schema accroding to which 
 class PostCreate(PostBase):
     pass
 
+class UserOut (BaseModel):
+    email: EmailStr
+    id:int
+    created_at:datetime
+    class Config:
+        orm_mode=True
+
 class Post(PostBase):       # response model
     id:int
     created_at:datetime
     owner_id: int
+    owner: UserOut
     class Config:
         orm_mode=True
 
