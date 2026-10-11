@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional,Literal
 from pydantic import BaseModel,EmailStr
 
 class PostBase(BaseModel):       # helps you create a schema accroding to which input happen
@@ -47,3 +47,7 @@ class Token (BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[str] =None
+
+class Vote(BaseModel):
+    post_id:int
+    dir:Literal[0,1]
