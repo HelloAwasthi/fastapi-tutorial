@@ -1,0 +1,28 @@
+"""adding content column to post
+
+Revision ID: 900125a04daf
+Revises: 1ce150de1db7
+Create Date: 2026-10-12 00:24:52.049627
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '900125a04daf'
+down_revision: Union[str, Sequence[str], None] = '1ce150de1db7'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    op.add_column("posts",sa.Column("content",sa.String(),nullable=False))
+    pass
+
+
+def downgrade() -> None:
+    op.drop_column("posts","content")
+    pass
